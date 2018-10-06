@@ -32,7 +32,7 @@ function calcCode() {
   let comma = false;
   for(stu of subsToUnsub) {
     if(comma) unsubString += ',';
-    unsubString += stu.subreddit;
+    unsubString += `'${stu.subreddit}'`;
 
     comma = true;
   }
