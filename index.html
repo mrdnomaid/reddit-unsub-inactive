@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Unsubscribe from Inactive Subreddits</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+</head>
+
+<body>
+  <header>
+    <h1>Unsubscribe from Inactive Subreddits</h1>
+  </header>
+
+  <main>
+    <noscript>
+      <div class="step warn" id="noscript">
+        <h2>JavaScript Warning<i class="fab fa-fw fa-js-square"></i></h2>
+        <p>Please <a href="https://enable-javascript.com/">enable JavaScript</a> to use this site</p>
+      </div>
+    </noscript>
+
+    <div class="step warn" id="mobile" style="display: none;">
+      <h2>Mobile Warning <i class="fas fa-fw fa-mobile"></i></h2>
+      <p>This site is designed for desktops. Use on a phone/tablet is not recommended (you can't access the browser console and that)</p>
+    </div>
+
+    <div class="step warn" id="firefox" style="display: none;">
+      <h2>Firefox Warning <i class="fab fa-fw fa-firefox"></i></h2>
+      <p>If no subreddits to remove are found, check your console and see if Tracking Protection is enabled. This causes problems with sites such as this that make cross-site requests.</p>
+    </div>
+
+    <div class="step" id="step1">
+      <h2>Step 1 <i class="fas fa-fw fa-keyboard"></i></h2>
+      <p>Visit <a href="https://www.reddit.com/subreddits/mine/">this page</a> and click on "multireddit of your subscriptions" in the right sidebar.</p>
+      <p>Copy and paste that URL into the box below:</p>
+      <input type="text" placeholder="https://reddit.com/r/aww+adorablecats+amazingdogs..." id="inUrl">
+      <p>Unsubscribe from subreddits where the last post is <input type="number" value="3" min="1" max="365" id="daysThreshold"> or more days old</p>
+      <button type="button" onclick="doTheThing(document.getElementById('inUrl').value);">Continue</button>
+    </div>
+
+    <div class="step" id="step2" style="display: none;">
+      <h2>Step 2 <i class="fas fa-fw fa-cloud-download-alt"></i></h2>
+      <p>A thing is happening! Respect the thing!</p>
+      <p id="currently">Preparing...</p>
+    </div>
+
+    <div class="step" id="step3" style="display: none;">
+      <h2>Step 3 <i class="fas fa-fw fa-trash"></i></h2>
+      <p>Here's a list of subreddits you will be unsubscribed from (<b id="toUnsubLength">0</b>):</p>
+      <ul id="toUnsub">
+      </ul>
+    </div>
+
+    <div class="step" id="step4" style="display: none;">
+      <h2>Step 4 <i class="fas fa-fw fa-paste"></i></h2>
+      <p>Copy and paste this code into your browser console on <a href="https://www.reddit.com/subreddits/mine/">the same page</a> as before and click all the highlighted buttons.</p>
+      <input type="text" id="unsubCode" onfocus="this.select();" readonly="readonly"></input>
+    </div>
+
+    <footer>
+      <p>
+          A <a href="https://dnomaid.co.uk">dnomaid</a> thing. <a href="https://github.com/mrdnomaid/reddit-unsub-inactive">Source</a>.
+      </p>
+    </footer>
+  </main>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="js/func.js"></script>
+  <script src="js/go.js"></script>
+  <script src="js/check.js"></script>
+  <script src="js/unsubs.js"></script>
+</body>
+
+</html>
