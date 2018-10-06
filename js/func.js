@@ -37,15 +37,16 @@ function calcCode() {
     comma = true;
   }
   let codeString = `
-    const toUnsub = [${unsubString.replace(/undefined/g, '')}];
+    let toUnsub = [${unsubString.replace(/undefined/g, '')}];
     const len = toUnsub.length;
     setInterval(function() {
       let a = toUnsub.pop();
       console.info(\`Attempting to unsubscribe from \$\{a\}\`);
-      let e = document.querySelector(\`[data-sr_name='\$\{a}']\`).querySelector('.remove');
-      e.children[0].click();
+      let e = document.querySelector(\`[data-sr_name='\$\{a\}']\`).querySelector('.remove');
+      e.click();
       if (toUnsub.length == 0) {
-          console.log(\`Unsubscribed from all \$\{len\} subreddits\`);
+          alert(\`Unsubscribed from all \$\{len\} subreddits\`);
+          window.location.reload();
       }
     }, 500);
   `;
