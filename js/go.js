@@ -17,7 +17,6 @@ function doTheThing(url) {
 
       show('step3');
 
-      let i = 0;
       for (let i = 0; i < subs.length; i++) {
         window.setTimeout(function() {
           checkSub(subs[i], i, subs.length);

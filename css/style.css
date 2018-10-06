@@ -95,6 +95,7 @@ li {
   border-radius: 16px;
   background-color: #fff9f7;
   transition: all 0.2s;
+  cursor: default;
 }
 
 li:hover {

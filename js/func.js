@@ -17,27 +17,15 @@ function fade(id) {
 }
 
 function calcCode() {
-  let unsubString = '';
-  let calcLen = subsToUnsub.length;
-  let calcCommaB = false;
-  let calcComma = '';
-  for(stu of subsToUnsub) {
-    if(calcCommaB) {
-      calcComma = ',';
-    }
-    unsubString += `${calcComma}'${stu.subreddit}'`;
-    calcCommaB = true;
-  }
-  document.getElementById('unsubCode').value = `
-    const toUnsub = [${unsubString}];
-    const butts = document.querySelectorAll('[data-sr_name]');
+  let codeString = '';
 
-    for(butt of butts) {
-      if(toUnsub.indexOf(butt.getAttribute('data-sr_name')) > -1) {
-        butt.style['transform'] = 'scale(1.2)';
-      }
-    }
-  `;
+  let i = 0;
+  for(stu of subsToUnsub) {
+    i++;
+    codeString += `window.setTimeout(function(){document.querySelector('[data-sr_name="${stu.subreddit}"]').children[0].click();console.info('Tried to unsubscribe from ${stu.subreddit} (${i+1}/${subsToUnsub.length})')},${i*1000});`;
+  }
+
+  document.getElementById('unsubCode').value = codeString.replace(/\n/g,'');
 }
 
 if(navigator.userAgent.toLowerCase().indexOf('firefox') > -1) {
