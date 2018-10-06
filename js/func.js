@@ -36,7 +36,7 @@ function calcCode() {
       let e = document.querySelector(\`[data-sr_name='\$\{a.subreddit}']\`).querySelector('.remove');
       e.children[0].click();
       if (toUnsub.length == 0) {
-          console.log(`Unsubscribed from all ${len} subreddits`)
+          console.log(\`Unsubscribed from all \$\{len\} subreddits\`);
       }
     }, 500);
   `;
