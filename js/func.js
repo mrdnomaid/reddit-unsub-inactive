@@ -27,13 +27,22 @@ function calcCode() {
   //
   // Improved code courtesy of Leo [thelmgn.com](/u/LMGN)
   //
+
+  let unsubString;
+  let comma = false;
+  for(stu of subsToUnsub) {
+    if(comma) unsubString += ',';
+    unsubString += stu.subreddit;
+
+    comma = true;
+  }
   let codeString = `
-    const toUnsub = ${subsToUnsub};
+    const toUnsub = [${unsubString.replace(/undefined/g, '')}];
     const len = toUnsub.length;
     setInterval(function() {
       let a = toUnsub.pop();
       console.info(\`Attempting to unsubscribe from \$\{a\}\`);
-      let e = document.querySelector(\`[data-sr_name='\$\{a.subreddit}']\`).querySelector('.remove');
+      let e = document.querySelector(\`[data-sr_name='\$\{a}']\`).querySelector('.remove');
       e.children[0].click();
       if (toUnsub.length == 0) {
           console.log(\`Unsubscribed from all \$\{len\} subreddits\`);
