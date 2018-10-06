@@ -17,13 +17,29 @@ function fade(id) {
 }
 
 function calcCode() {
-  let codeString = '';
+  // let codeString = '';
+  // let i = 0;
+  // for(stu of subsToUnsub) {
+  //   i++;
+  //   codeString += `window.setTimeout(function(){document.querySelector('[data-sr_name="${stu.subreddit}"]').children[0].click();console.info('Tried to unsubscribe from ${stu.subreddit} (${i+1}/${subsToUnsub.length})')},${i*1000});`;
+  // }
 
-  let i = 0;
-  for(stu of subsToUnsub) {
-    i++;
-    codeString += `window.setTimeout(function(){document.querySelector('[data-sr_name="${stu.subreddit}"]').children[0].click();console.info('Tried to unsubscribe from ${stu.subreddit} (${i+1}/${subsToUnsub.length})')},${i*1000});`;
-  }
+  //
+  // Improved code courtesy of Leo [thelmgn.com](/u/LMGN)
+  //
+  let codeString = `
+    const toUnsub = ${subsToUnsub};
+    const len = toUnsub.length;
+    setInterval(function() {
+      let a = toUnsub.pop();
+      console.info(\`Attempting to unsubscribe from \$\{a\}\`);
+      let e = document.querySelector(\`[data-sr_name='\$\{a.subreddit}']\`).querySelector('.remove');
+      e.children[0].click();
+      if (toUnsub.length == 0) {
+          console.log(`Unsubscribed from all ${len} subreddits`)
+      }
+    }, 500);
+  `;
 
   document.getElementById('unsubCode').value = codeString.replace(/\n/g,'');
 }
