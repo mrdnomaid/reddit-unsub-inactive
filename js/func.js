@@ -25,7 +25,7 @@ function calcCode() {
     if(calcCommaB) {
       calcComma = ',';
     }
-    unsubString += `${calcComma}${stu.subreddit}`;
+    unsubString += `${calcComma}'${stu.subreddit}'`;
     calcCommaB = true;
   }
   document.getElementById('unsubCode').value = `
