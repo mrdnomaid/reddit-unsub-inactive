@@ -1,9 +1,10 @@
 function doTheThing(url) {
   show('step2');
 
+  // Convert days to seconds
   days = parseInt(document.getElementById('daysThreshold').value * 86400);
 
-  if (url.length < 5) {
+  if (url.length < 5) { // Easier than checking if there's anything there at all
     s('<b>ERROR:</b> Please enter a URL and try again!')
   } else {
     s('URL entered: Checking!');
@@ -14,10 +15,10 @@ function doTheThing(url) {
     } else {
       s(`Found <b>${subs.length}</b> subreddits`);
       fade('step1');
-
       show('step3');
 
-      for (let i = 0; i < subs.length; i++) {
+      // Loop through every subreddit in the array and run checkSub on it.
+      for (let i = 0; i < subs.length; i++) { // (Old-style for-loop here to make sure every subreddit is actually checked)
         window.setTimeout(function() {
           checkSub(subs[i], i, subs.length);
         }, i * 100);

@@ -31,6 +31,7 @@
   </header>
 
   <main>
+    <!-- No JS Warning -->
     <noscript>
       <div class="step warn" id="noscript">
         <h2>JavaScript Warning<i class="fab fa-fw fa-js-square"></i></h2>
@@ -38,16 +39,19 @@
       </div>
     </noscript>
 
+    <!-- Mobile Warning -->
     <div class="step warn" id="mobile" style="display: none;">
       <h2>Mobile Warning <i class="fas fa-fw fa-mobile"></i></h2>
       <p>This site is designed for desktops. Use on a phone/tablet is not recommended (you can't access the browser console and that)</p>
     </div>
 
+    <!-- Firefox Warning -->
     <div class="step warn" id="firefox" style="display: none;">
       <h2>Firefox Warning <i class="fab fa-fw fa-firefox"></i></h2>
       <p>Before running this tool, <a href="img/firefox.png" target="_blank" rel="noopener noreferrer nofollow">check and see</a> if <a href="https://support.mozilla.org/en-US/kb/tracking-protection" target="_blank" rel="noopener noreferrer nofollow">Tracking Protection</a> is enabled. This causes problems with sites such as this that make cross-site requests.</p>
     </div>
 
+    <!-- Step 1 (input) -->
     <div class="step" id="step1">
       <h2>Step 1 <i class="fas fa-fw fa-keyboard"></i></h2>
       <p>Visit <a href="https://old.reddit.com/subreddits/mine/" target="_blank" rel="noopener noreferrer nofollow">this page</a> and click on "multireddit of your subscriptions" in the right sidebar.</p>
@@ -57,12 +61,14 @@
       <button type="button" onclick="doTheThing(document.getElementById('inUrl').value);">Continue</button>
     </div>
 
+    <!-- Step 2 (compute&fetch) -->
     <div class="step" id="step2" style="display: none;">
       <h2>Step 2 <i class="fas fa-fw fa-cloud-download-alt"></i></h2>
       <p>A thing is happening! Respect the thing!</p>
       <p id="currently">Preparing...</p>
     </div>
 
+    <!-- Step 3 (listing) -->
     <div class="step" id="step3" style="display: none;">
       <h2>Step 3 <i class="fas fa-fw fa-trash"></i></h2>
       <p>Here's a list of subreddits you will be unsubscribed from (<b id="toUnsubLength">0</b>):</p>
@@ -70,6 +76,7 @@
       </ul>
     </div>
 
+    <!-- Step 4 (code)-->
     <div class="step" id="step4" style="display: none;">
       <h2>Step 4 <i class="fas fa-fw fa-paste"></i></h2>
       <p>Copy and paste this code into your browser console on <a href="https://old.reddit.com/subreddits/mine/">the same page</a> as before and click all the highlighted buttons.</p>
@@ -84,10 +91,15 @@
     </footer>
   </main>
 
+  <!-- JQuery required only for .getJSON since I'm lazy -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!-- "Global" functions used in many places -->
   <script src="js/func.js"></script>
+  <!-- Check the URL and get the process started -->
   <script src="js/go.js"></script>
+  <!-- The script that calculates which subreddits to keep -->
   <script src="js/check.js"></script>
+  <!-- Manage the unsubscription listing -->
   <script src="js/unsubs.js"></script>
 </body>
 
