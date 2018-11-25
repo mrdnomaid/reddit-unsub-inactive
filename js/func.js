@@ -4,7 +4,7 @@ let days = 3; // Default amount of days threshhold
 // Change the status message in step 2
 function s(statusMsg) {
   document.getElementById('currently').innerHTML = statusMsg;
-  console.info(statusMsg);
+  //console.info(statusMsg);
 }
 
 // Show a step (or anything really)
